@@ -18,6 +18,7 @@
         <failOnMissingWebXml>false</failOnMissingWebXml>
 
         <vaadin.version>15.0.0.alpha7</vaadin.version>
+        <flow.version>3.0-SNAPSHOT</flow.version>
         <drivers.dir>${project.basedir}/drivers</drivers.dir>
         <drivers.downloader.phase>pre-integration-test</drivers.downloader.phase>
 
@@ -74,6 +75,21 @@
           </exclusions>
       </dependency>
       <dependency>
+          <groupId>com.vaadin</groupId>
+          <artifactId>flow-html-components</artifactId>
+          <version>${flow.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.vaadin</groupId>
+        <artifactId>flow-client</artifactId>
+        <version>${flow.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>com.vaadin</groupId>
+        <artifactId>flow-server</artifactId>
+        <version>${flow.version}</version>
+    </dependency>
+  <dependency>
           <groupId>javax.servlet</groupId>
           <artifactId>javax.servlet-api</artifactId>
           <version>4.0.1</version>
@@ -135,6 +151,13 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
+        <repository>
+            <id>vaadin-snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
     </repositories>
 
     <pluginRepositories>
@@ -151,6 +174,13 @@
             <url>https://maven.vaadin.com/vaadin-prereleases</url>
             <snapshots>
                 <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>vaadin-snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
@@ -173,8 +203,8 @@
             -->
             <plugin>
                 <groupId>com.vaadin</groupId>
-                <artifactId>vaadin-maven-plugin</artifactId>
-                <version>${vaadin.version}</version>
+                <artifactId>flow-maven-plugin</artifactId>
+                <version>${flow.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -205,7 +235,7 @@
                 <plugins>
                     <plugin>
                         <groupId>com.vaadin</groupId>
-                        <artifactId>vaadin-maven-plugin</artifactId>
+                        <artifactId>flow-maven-plugin</artifactId>
                         <executions>
                             <execution>
                                 <goals>
