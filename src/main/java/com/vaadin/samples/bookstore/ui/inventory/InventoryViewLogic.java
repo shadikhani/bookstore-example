@@ -64,6 +64,7 @@ public class InventoryViewLogic implements Serializable {
                     final int pid = Integer.parseInt(productId);
                     final Product product = findProduct(pid);
                     view.selectRow(product);
+                    editProduct(product);
                 } catch (final NumberFormatException e) {
                 }
             }
