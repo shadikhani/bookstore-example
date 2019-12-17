@@ -8,6 +8,8 @@ import org.openqa.selenium.By;
 
 import com.vaadin.flow.component.button.testbench.ButtonElement;
 import com.vaadin.flow.component.grid.testbench.GridElement;
+import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.component.textfield.testbench.TextFieldElement;
 import com.vaadin.samples.AbstractViewTest;
 import com.vaadin.samples.MainLayoutElement;
 import com.vaadin.samples.authentication.LoginFormElement;
@@ -76,7 +78,10 @@ public class SampleCrudViewIT extends AbstractViewTest {
         prodForm.getProductNameElement().setValue(newTitle);
         prodForm.getSaveButtonElement().click();
 
-        // then the new title is in the grid
+        // when filtering by new product title
+        $(TextFieldElement.class).first().setValue("2nd ed.");
+
+        // then the new title should be in the grid
         final GridElement grid = $(GridElement.class).first();
         final boolean foundInGrid = IntStream.range(0, grid.getRowCount())
                 .mapToObj(row -> grid.getCell(row, 0).getText())
